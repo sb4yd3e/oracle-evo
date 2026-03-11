@@ -1,24 +1,24 @@
-# Oracle Nightly - MCP Memory Layer
+# Oracle Evo - MCP Memory Layer
 
 > "The Oracle Keeps the Human Human" - now queryable via MCP
 
 | | |
 |---|---|
-| **Status** | Always Nightly |
-| **Version** | 0.4.0-nightly |
+| **Status** | Evolving |
+| **Version** | 1.0.0-evo |
 | **Created** | 2025-12-29 |
 | **Updated** | 2026-03-02 |
 
-TypeScript MCP server for semantic search over Oracle philosophy — SQLite FTS5 + ChromaDB hybrid search, HTTP API, and vault CLI.
+TypeScript MCP server for semantic search and knowledge management — SQLite FTS5 + ChromaDB hybrid search, HTTP API, and vault CLI.
 
 ## Architecture
 
 ```
-oracle-v2 (one package, two bins)
-├── bunx oracle-v2                          → MCP server (src/index.ts)
-├── bunx --package oracle-v2 oracle-vault   → Vault CLI (src/vault/cli.ts)
-├── bun run server                          → HTTP API (src/server.ts)
-└── bun run index                           → Indexer (src/indexer.ts)
+oracle-evo (one package, two bins)
+├── bunx oracle-evo                          → MCP server (src/index.ts)
+├── bunx --package oracle-evo oracle-vault   → Vault CLI (src/vault/cli.ts)
+├── bun run server                           → HTTP API (src/server.ts)
+└── bun run index                            → Indexer (src/indexer.ts)
 
 oracle-studio (separate repo)
 └── bunx oracle-studio                      → React dashboard
@@ -40,25 +40,25 @@ Distributed via GitHub — no npm publish needed:
 
 ```bash
 # MCP server (stdio, for Claude Code)
-bunx --bun oracle-v2@github:Soul-Brews-Studio/oracle-v2#main
+bunx --bun oracle-evo@github:sb4yd3e/oracle-evo#main
 
 # Vault CLI (secondary bin — use --package)
-bunx --bun --package oracle-v2@github:Soul-Brews-Studio/oracle-v2#main oracle-vault --help
+bunx --bun --package oracle-evo@github:sb4yd3e/oracle-evo#main oracle-vault --help
 ```
 
 ### Add to Claude Code
 
 ```bash
-claude mcp add oracle-v2 -- bunx --bun oracle-v2@github:Soul-Brews-Studio/oracle-v2#main
+claude mcp add oracle-evo -- bunx --bun oracle-evo@github:sb4yd3e/oracle-evo#main
 ```
 
 Or in `~/.claude.json`:
 ```json
 {
   "mcpServers": {
-    "oracle-v2": {
+    "oracle-evo": {
       "command": "bunx",
-      "args": ["--bun", "oracle-v2@github:Soul-Brews-Studio/oracle-v2#main"]
+      "args": ["--bun", "oracle-evo@github:sb4yd3e/oracle-evo#main"]
     }
   }
 }
@@ -67,8 +67,8 @@ Or in `~/.claude.json`:
 ### From source
 
 ```bash
-git clone https://github.com/Soul-Brews-Studio/oracle-v2.git
-cd oracle-v2 && bun install
+git clone https://github.com/sb4yd3e/oracle-evo.git
+cd oracle-evo && bun install
 bun run dev          # MCP server
 bun run server       # HTTP API on :47778
 ```
@@ -77,7 +77,7 @@ bun run server       # HTTP API on :47778
 <summary>Install script (legacy)</summary>
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/Soul-Brews-Studio/oracle-v2/main/scripts/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/sb4yd3e/oracle-evo/main/scripts/install.sh | bash
 ```
 </details>
 
@@ -165,7 +165,7 @@ bun db:studio     # Open Drizzle Studio GUI
 ## Project Structure
 
 ```
-oracle-v2/
+oracle-evo/
 ├── src/
 │   ├── index.ts          # MCP server entry
 │   ├── server.ts         # HTTP API (Hono)
